@@ -2,96 +2,85 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body{
+    background: linear-gradient(to bottom, #ff5e00 0%, #ff5e00 50%, #000 50%, #000 100%);
     min-height:100vh;
-    background: linear-gradient(to bottom, #ff5e00 0%, #ff5e00 45%, #000 45%, #000 100%);
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:env(safe-area-inset-top) 15px env(safe-area-inset-bottom);
 }
 
-.hero{
+.app{
     width:100%;
-    padding:40px 20px;
-}
-
-.container{
     max-width:420px;
-    margin:0 auto;
     text-align:center;
     color:white;
 }
 
 .titulo{
-    font-size:36px;
-    font-weight:900;
-    margin-bottom:30px;
-}
-
-.imagem-centro img{
-    width:100%;
-    border-radius:12px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.4);
-    margin-bottom:30px;
-}
-
-.info{
-    background:rgba(0,0,0,0.6);
-    padding:25px;
-    border-radius:15px;
+    font-size:28px;
+    font-weight:800;
     margin-bottom:25px;
 }
 
-.info h2{
-    margin-bottom:15px;
-    font-size:22px;
+.poster{
+    width:100%;
+    border-radius:16px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    margin-bottom:25px;
 }
 
-.info p{
-    margin:8px 0;
-    font-size:16px;
+.card{
+    background:rgba(0,0,0,0.7);
+    padding:20px;
+    border-radius:16px;
+    margin-bottom:20px;
+}
+
+.card h2{
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.card p{
+    margin:6px 0;
+    font-size:15px;
 }
 
 .confirmacao{
     display:flex;
+    flex-direction:column;
     gap:10px;
-    justify-content:center;
 }
 
 input{
-    flex:1;
-    padding:12px;
+    padding:14px;
     border:none;
-    border-radius:8px;
+    border-radius:12px;
+    font-size:16px;
     outline:none;
 }
 
 button{
-    padding:12px 16px;
+    padding:14px;
     border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
     background:#ff5e00;
     color:white;
-    font-weight:bold;
-    border-radius:8px;
     cursor:pointer;
     transition:0.3s;
 }
 
-button:hover{
-    background:#ff7a26;
-    transform:scale(1.05);
+button:active{
+    transform:scale(0.97);
 }
 
-/* Responsivo */
-@media(max-width:480px){
-    .confirmacao{
-        flex-direction:column;
-    }
-
-    button{
-        width:100%;
-    }
+button:hover{
+    background:#ff7a26;
 }

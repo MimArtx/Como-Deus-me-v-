@@ -9,23 +9,39 @@
 
 <body>
 
-<div class="app">
+<div class="background"></div>
+<div class="overlay"></div>
+
+<section class="hero">
 
     <h1 class="titulo">COMO DEUS ME VÊ?</h1>
+    <p class="subtitulo">Descubra sua identidade e propósito.</p>
+
+</section>
+
+<section class="evento">
 
     <div class="card">
         <h2>Encontro dos Jovens</h2>
-        <p>📅 27 de Fevereiro</p>
-        <p>🕒 19h40 às 22h</p>
-        <p>📍 Igreja IEUES</p>
+
+        <div class="info-item">📅 <span>27 de Fevereiro</span></div>
+        <div class="info-item">🕒 <span>19h40 às 22h</span></div>
+        <div class="info-item">📍 <span>Igreja IEUES</span></div>
+
     </div>
 
-    <div class="confirmacao">
+</section>
+
+<section class="confirmar">
+
+    <h3>Confirme sua presença</h3>
+
+    <div class="form">
         <input type="text" id="nome" placeholder="Digite seu nome">
         <button onclick="confirmar()">Confirmar Presença</button>
     </div>
 
-</div>
+</section>
 
 <script>
 function confirmar(){

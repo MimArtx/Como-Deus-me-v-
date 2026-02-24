@@ -6,49 +6,48 @@
 }
 
 body{
-    background: linear-gradient(to bottom, #ff5e00 0%, #ff5e00 50%, #000 50%, #000 100%);
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:env(safe-area-inset-top) 15px env(safe-area-inset-bottom);
+    padding:20px;
+
+    /* IMAGEM COMO FUNDO */
+    background: 
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+        url("imagem.png") no-repeat center center;
+
+    background-size:cover;
+    background-attachment:fixed;
+    color:white;
 }
 
 .app{
     width:100%;
     max-width:420px;
     text-align:center;
-    color:white;
 }
 
 .titulo{
     font-size:28px;
     font-weight:800;
-    margin-bottom:25px;
-}
-
-.poster{
-    width:100%;
-    border-radius:16px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.4);
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 
 .card{
     background:rgba(0,0,0,0.7);
-    padding:20px;
+    padding:25px;
     border-radius:16px;
     margin-bottom:20px;
+    backdrop-filter: blur(6px);
 }
 
 .card h2{
     margin-bottom:10px;
-    font-size:20px;
 }
 
 .card p{
     margin:6px 0;
-    font-size:15px;
 }
 
 .confirmacao{

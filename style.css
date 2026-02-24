@@ -15,7 +15,7 @@ body{
     /* IMAGEM COMO FUNDO */
     background: 
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
-        url("imagem.png") no-repeat center center;
+        url("imagem.jpg") no-repeat center center;
 
     background-size:cover;
     background-attachment:fixed;

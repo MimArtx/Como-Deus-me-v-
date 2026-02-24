@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Como Deus me vê?</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Como Deus me vê?</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<section class="hero">
+<div class="app">
 
-    <div class="container">
+    <h1 class="titulo">COMO DEUS ME VÊ?</h1>
 
-        <h1 class="titulo">COMO DEUS ME VÊ?</h1>
+    <img src="imagem.jpg" class="poster" alt="Imagem do Evento">
 
-        <div class="imagem-centro">
-            <img src="imagem.jpg" alt="Imagem central">
-        </div>
-
-        <div class="info">
-            <h2>Encontro dos Jovens</h2>
-            <p>📅 27 de Fevereiro</p>
-            <p>🕒 19h40 às 22h</p>
-            <p>📍 Igreja IEUES</p>
-        </div>
-
-        <div class="confirmacao">
-            <input type="text" id="nome" placeholder="Digite seu nome">
-            <button onclick="confirmar()">Confirmar Presença</button>
-        </div>
-
+    <div class="card">
+        <h2>Encontro dos Jovens</h2>
+        <p>📅 27 de Fevereiro</p>
+        <p>🕒 19h40 às 22h</p>
+        <p>📍 Igreja IEUES</p>
     </div>
 
-</section>
+    <div class="confirmacao">
+        <input type="text" id="nome" placeholder="Digite seu nome">
+        <button onclick="confirmar()">Confirmar Presença</button>
+    </div>
+
+</div>
 
 <script>
 function confirmar(){
@@ -61,4 +57,3 @@ function confirmar(){
 
 </body>
 </html>
-

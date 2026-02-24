@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como Deus me vê?</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat', sans-serif;
+    background:#f26500;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* TOPO */
+.topo{
+    text-align:center;
+    padding:30px 20px;
+    font-weight:600;
+    letter-spacing:2px;
+    animation:fadeDown 1s ease;
+}
+
+/* IMAGEM CENTRAL */
+.imagem{
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+    animation:zoomIn 1.5s ease;
+}
+
+.imagem img{
+    width:320px;
+    max-width:90%;
+    border-radius:8px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* TITULO */
+.titulo{
+    text-align:center;
+    font-size:48px;
+    font-weight:800;
+    margin:30px 0;
+    animation:fadeUp 1.5s ease;
+}
+
+/* PARTE ESCURA */
+.bloco-escuro{
+    background:linear-gradient(to top, #000000, #1a1a1a);
+    padding:40px 20px;
+    text-align:center;
+}
+
+.info{
+    font-size:18px;
+    margin:8px 0;
+    font-weight:600;
+    animation:fadeUp 2s ease;
+}
+
+/* CARD CONFIRMAÇÃO */
+.card{
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:15px;
+    max-width:400px;
+    margin:30px auto;
+    backdrop-filter:blur(10px);
+    animation:fadeUp 2.5s ease;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    background:#f26500;
+    border:none;
+    padding:14px;
+    font-size:16px;
+    font-weight:700;
+    color:white;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#ff7b26;
+    transform:scale(1.05);
+}
+
+.versiculo{
+    margin-top:30px;
+    font-size:14px;
+    opacity:0.9;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.6;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeDown{
+    from{opacity:0; transform:translateY(-30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes zoomIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topo">
+ENCONTRO DOS JOVENS
+</div>
+
+<div class="imagem">
+    <img src="cartaz.jpg" alt="Como Deus me vê">
+</div>
+
+<div class="titulo">
+COMO DEUS ME VÊ?
+</div>
+
+<div class="bloco-escuro">
+
+<p class="info">📅 27 de Fevereiro</p>
+<p class="info">🕖 19h40</p>
+<p class="info">⏰ Encerramento às 22h</p>
+<p class="info">📍 Na Igreja IEUES</p>
+
+<div class="card">
+<h3>Confirme sua presença 👇</h3>
+<input type="text" id="nome" placeholder="Seu nome">
+<button onclick="confirmar()">Confirmar Presença</button>
+</div>
+
+<div class="versiculo">
+Jeremias 1:5 “Antes de formá-lo no ventre eu o escolhi; 
+antes de você nascer, eu o separei, 
+e o designei profeta às nações”
+</div>
+
+</div>
+
+<script>
+function confirmar(){
+    var nome = document.getElementById("nome").value;
+
+    if(nome === ""){
+        alert("Por favor, digite seu nome.");
+    }else{
+        alert("🔥 Presença confirmada! Nos vemos lá, " + nome + "!");
+        document.getElementById("nome").value = "";
+    }
+}
+</script>
+
+</body>
+</html>

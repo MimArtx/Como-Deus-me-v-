@@ -17,7 +17,7 @@ body{
     position:fixed;
     width:110%;
     height:110%;
-    background:url("imagem.png") center center no-repeat;
+    background:url("imagem.jpg") center center no-repeat;
     background-size:cover;
     animation:zoom 25s infinite alternate ease-in-out;
     z-index:-2;

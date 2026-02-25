@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desafio 7 Dias | Como Deus Me Vê?</title>
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,7 +14,7 @@
     <section id="splash" class="screen active">
       <h1>Desafio 7 Dias</h1>
       <p>Como Deus Me Vê?</p>
-      <button onclick="goTo('cadastro')">Começar</button>
+      <button type="button" onclick="goTo('cadastro')">Começar</button>
     </section>
 
     <!-- Cadastro -->
@@ -26,7 +25,7 @@
       <input type="number" id="idade" placeholder="Idade">
       <input type="tel" id="telefone" placeholder="Telefone">
 
-      <button onclick="cadastrar()">Entrar no desafio</button>
+      <button type="button" onclick="cadastrar()">Entrar no desafio</button>
     </section>
 
     <!-- Dashboard -->
@@ -36,7 +35,7 @@
 
       <div id="diasContainer"></div>
 
-      <button onclick="goTo('diario')">Meu Diário</button>
+      <button type="button" onclick="goTo('diario')">Meu Diário</button>
     </section>
 
     <!-- Tela Dia -->
@@ -46,7 +45,7 @@
 
       <textarea id="textoDiario" placeholder="Escreva aqui o que Deus falou com você..."></textarea>
 
-      <button onclick="concluirDia()">Concluir Dia</button>
+      <button type="button" onclick="concluirDia()">Concluir Dia</button>
     </section>
 
     <!-- Diário Geral -->
@@ -54,7 +53,7 @@
       <h2>Meu Diário 💛</h2>
       <div id="listaDiario"></div>
 
-      <button onclick="goTo('dashboard')">Voltar</button>
+      <button type="button" onclick="goTo('dashboard')">Voltar</button>
     </section>
 
   </div>

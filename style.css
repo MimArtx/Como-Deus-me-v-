@@ -1,3 +1,8 @@
+/* RESET BÁSICO */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,56 +10,95 @@ body {
   color: #333;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* CONTAINER PRINCIPAL */
 #app {
   width: 100%;
   max-width: 400px;
-  padding: 20px;
+  padding: 24px;
 }
 
+/* TELAS */
 .screen {
   display: none;
   flex-direction: column;
   gap: 20px;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .screen.active {
   display: flex;
 }
 
+/* TÍTULOS */
 h1, h2 {
   text-align: center;
+  margin: 0;
 }
 
+/* INPUTS */
 input, textarea {
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   font-size: 16px;
+  width: 100%;
 }
 
+input:focus,
+textarea:focus {
+  outline: 2px solid #6C5CE7;
+}
+
+/* TEXTAREA */
 textarea {
-  min-height: 100px;
+  min-height: 120px;
+  resize: none;
 }
 
+/* BOTÕES */
 button {
   padding: 12px;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   background: #6C5CE7;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover {
   opacity: 0.9;
+  transform: scale(1.02);
 }
 
+/* CARDS DOS DIAS */
 .card-dia {
   background: white;
-  padding: 12px;
-  border-radius: 12px;
+  padding: 14px;
+  border-radius: 14px;
   cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.card-dia:hover {
+  transform: scale(1.03);
+}
+
+/* ANIMAÇÃO SUAVE */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

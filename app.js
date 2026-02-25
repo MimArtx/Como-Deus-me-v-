@@ -13,9 +13,6 @@ const conteudos = {
   7: "Deus me vê como vencedor(a)."
 };
 
-/* ========================= */
-/* TROCA DE TELAS */
-/* ========================= */
 function goTo(screenId) {
   document.querySelectorAll(".screen").forEach(screen => {
     screen.classList.remove("active");
@@ -28,32 +25,25 @@ function goTo(screenId) {
   }
 }
 
-/* ========================= */
-/* CADASTRO */
-/* ========================= */
-function cadastrar() {
-  const nome = document.getElementById("nome").value.trim();
+function iniciarApp() {
+  const nomeInput = document.getElementById("nomeInput");
+  const nome = nomeInput.value.trim();
 
   if (!nome) {
-    alert("Digite seu nome para continuar 💛");
+    alert("Por favor, digite seu nome.");
     return;
   }
 
   usuario = { nome };
   progresso = 1;
-  diarios = {};
 
   localStorage.setItem("usuario", JSON.stringify(usuario));
   localStorage.setItem("progresso", progresso);
-  localStorage.setItem("diarios", JSON.stringify(diarios));
 
   carregarDashboard();
   goTo("dashboard");
 }
 
-/* ========================= */
-/* DASHBOARD */
-/* ========================= */
 function carregarDashboard() {
   document.getElementById("saudacao").innerText = `Olá, ${usuario.nome} ✨`;
   document.getElementById("progressoTexto").innerText = `Dia atual: ${progresso}/7`;
@@ -78,9 +68,6 @@ function carregarDashboard() {
   }
 }
 
-/* ========================= */
-/* ABRIR DIA */
-/* ========================= */
 function abrirDia(dia) {
   diaAtual = dia;
 
@@ -91,18 +78,10 @@ function abrirDia(dia) {
   goTo("dia");
 }
 
-/* ========================= */
-/* CONCLUIR DIA */
-/* ========================= */
 function concluirDia() {
-  const texto = document.getElementById("textoDiario").value.trim();
-
-  if (!texto) {
-    alert("Escreva algo antes de concluir 💛");
-    return;
-  }
-
+  const texto = document.getElementById("textoDiario").value;
   diarios[diaAtual] = texto;
+
   localStorage.setItem("diarios", JSON.stringify(diarios));
 
   if (progresso < 7) {
@@ -114,14 +93,7 @@ function concluirDia() {
   goTo("dashboard");
 }
 
-/* ========================= */
-/* CARREGAMENTO INICIAL */
-/* ========================= */
 window.onload = () => {
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.remove("active");
-  });
-
   if (usuario) {
     carregarDashboard();
     goTo("dashboard");

@@ -1,12 +1,19 @@
+/* ========================= */
 /* RESET BÁSICO */
+/* ========================= */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* ========================= */
+/* BODY */
+/* ========================= */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #B8A1FF, #A7C7E7);
+  background: linear-gradient(135deg, #B8A1FF, #A7C7E7, #FFE3F1);
+  background-size: 200% 200%;
   color: #333;
   display: flex;
   justify-content: center;
@@ -14,29 +21,26 @@ body {
   min-height: 100vh;
 }
 
+/* ========================= */
 /* CONTAINER PRINCIPAL */
+/* ========================= */
 #app {
   width: 100%;
   max-width: 400px;
-  padding: 24px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
-#app {
-  width: 100%;
-  max-width: 400px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 25px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-
+/* ========================= */
 /* TELAS */
+/* ========================= */
 .screen {
   display: none;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
   animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -44,19 +48,40 @@ body {
   display: flex;
 }
 
+/* ========================= */
 /* TÍTULOS */
-h1, h2 {
+/* ========================= */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
   text-align: center;
-  margin: 0;
 }
 
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ========================= */
+/* TEXTOS */
+/* ========================= */
+p {
+  text-align: center;
+  font-size: 15px;
+}
+
+/* ========================= */
 /* INPUTS */
-input, textarea {
-  padding: 12px;
-  border-radius: 10px;
+/* ========================= */
+input,
+textarea {
+  padding: 14px;
+  border-radius: 14px;
   border: none;
   font-size: 16px;
   width: 100%;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 input:focus,
@@ -64,49 +89,76 @@ textarea:focus {
   outline: 2px solid #6C5CE7;
 }
 
+/* ========================= */
 /* TEXTAREA */
+/* ========================= */
 textarea {
-  min-height: 120px;
+  min-height: 140px;
   resize: none;
 }
 
+/* ========================= */
 /* BOTÕES */
+/* ========================= */
 button {
-  padding: 12px;
+  padding: 14px;
   border: none;
-  border-radius: 25px;
-  background: #6C5CE7;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #6C5CE7, #8E7CFF);
   color: white;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
 }
 
 button:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
+  transform: translateY(-2px);
 }
 
+/* ========================= */
 /* CARDS DOS DIAS */
+/* ========================= */
 .card-dia {
   background: white;
-  padding: 14px;
-  border-radius: 14px;
+  padding: 18px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
   text-align: center;
-  transition: 0.2s;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .card-dia:hover {
-  transform: scale(1.03);
+  transform: translateY(-4px);
 }
 
+/* ========================= */
+/* LISTA DO DIÁRIO */
+/* ========================= */
+#listaDiario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#listaDiario div {
+  background: white;
+  padding: 12px;
+  border-radius: 14px;
+  font-size: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+}
+
+/* ========================= */
 /* ANIMAÇÃO SUAVE */
+/* ========================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;

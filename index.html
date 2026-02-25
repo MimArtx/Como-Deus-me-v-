@@ -1,58 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Como Deus me vê?</title>
-<link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio 7 Dias | Como Deus Me Vê?</title>
 
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
 
-<div class="background"></div>
-<div class="overlay"></div>
+  <div id="app">
 
-<div class="container">
+    <!-- Splash Screen -->
+    <section id="splash" class="screen active">
+      <h1>Desafio 7 Dias</h1>
+      <p>Como Deus Me Vê?</p>
+      <button onclick="goTo('cadastro')">Começar</button>
+    </section>
 
-    <h1>COMO DEUS ME VÊ?</h1>
+    <!-- Cadastro -->
+    <section id="cadastro" class="screen">
+      <h2>Bem-vindo 💛</h2>
 
-    <div class="card">
-        <h2>Encontro dos Jovens</h2>
-        <p>📅 27 de Fevereiro</p>
-        <p>🕒 19h40 às 22h</p>
-        <p>📍 Igreja IEUES</p>
-    </div>
+      <input type="text" id="nome" placeholder="Nome">
+      <input type="number" id="idade" placeholder="Idade">
+      <input type="tel" id="telefone" placeholder="Telefone">
 
-    <div class="confirmacao">
-        <input type="text" id="nome" placeholder="Digite seu nome">
-        <button onclick="confirmar()">Confirmar Presença</button>
-    </div>
+      <button onclick="cadastrar()">Entrar no desafio</button>
+    </section>
 
-</div>
+    <!-- Dashboard -->
+    <section id="dashboard" class="screen">
+      <h2 id="saudacao"></h2>
+      <p id="progressoTexto"></p>
 
-<script>
-function confirmar(){
-    var nome = document.getElementById("nome").value;
+      <div id="diasContainer"></div>
 
-    if(nome === ""){
-        alert("Digite seu nome!");
-        return;
-    }
+      <button onclick="goTo('diario')">Meu Diário</button>
+    </section>
 
-    fetch("https://script.google.com/macros/s/AKfycbwT4gpUs6xafitUjDUAnMV2jaCEGfRISXxU9tum2eR_ChB63SdJzIuj2acsnQy0v_uZLg/exec", {
-        method: "POST",
-        body: new URLSearchParams({ "nome": nome })
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert("🔥 Presença confirmada!");
-        document.getElementById("nome").value = "";
-    })
-    .catch(error => {
-        alert("Erro ao enviar.");
-    });
-}
-</script>
+    <!-- Tela Dia -->
+    <section id="dia" class="screen">
+      <h2 id="tituloDia"></h2>
+      <p id="conteudoDia"></p>
 
+      <textarea id="textoDiario" placeholder="Escreva aqui o que Deus falou com você..."></textarea>
+
+      <button onclick="concluirDia()">Concluir Dia</button>
+    </section>
+
+    <!-- Diário Geral -->
+    <section id="diario" class="screen">
+      <h2>Meu Diário 💛</h2>
+      <div id="listaDiario"></div>
+
+      <button onclick="goTo('dashboard')">Voltar</button>
+    </section>
+
+  </div>
+
+  <script src="js/app.js"></script>
 </body>
 </html>

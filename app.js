@@ -12,13 +12,16 @@ const conteudos = {
   7: "Deus me vê como vencedor(a)."
 };
 
-function goTo(screen) {
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-  document.getElementById(screen).classList.add("active");
-}
+function goTo(screenId) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
 
-function cadastrar() {
-  const nome = document.getElementById("nome").value;
+  const target = document.getElementById(screenId);
+  if (target) {
+    target.classList.add("active");
+    window.scrollTo(0, 0);
+  }
 
   usuario = { nome };
   localStorage.setItem("usuario", JSON.stringify(usuario));

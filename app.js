@@ -31,6 +31,7 @@ function goTo(screenId) {
 /* ========================= */
 /* CADASTRO */
 /* ========================= */
+
 function cadastrar() {
   const nome = document.getElementById("nome").value.trim();
 
@@ -47,8 +48,9 @@ function cadastrar() {
   localStorage.setItem("progresso", progresso);
   localStorage.setItem("diarios", JSON.stringify(diarios));
 
-  carregarDashboard();
-  goTo("dashboard");
+  document.getElementById("boasVindas").innerText = `Bem-vindo(a), ${usuario.nome} ✨`;
+
+  goTo("home");
 }
 
 /* ========================= */

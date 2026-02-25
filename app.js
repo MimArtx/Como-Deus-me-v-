@@ -80,3 +80,16 @@ window.onload = () => {
     goTo("dashboard");
   }
 };
+
+window.onload = () => {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById("splash").classList.add("active");
+
+  if (usuario) {
+    carregarDashboard();
+    goTo("dashboard");
+  }
+};

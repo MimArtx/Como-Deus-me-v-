@@ -31,7 +31,6 @@ function goTo(screenId) {
 /* ========================= */
 /* CADASTRO */
 /* ========================= */
-
 function cadastrar() {
   const nome = document.getElementById("nome").value.trim();
 
@@ -48,9 +47,24 @@ function cadastrar() {
   localStorage.setItem("progresso", progresso);
   localStorage.setItem("diarios", JSON.stringify(diarios));
 
-  document.getElementById("boasVindas").innerText = `Bem-vindo(a), ${usuario.nome} ✨`;
+  document.getElementById("boasVindas").innerText =
+    `Bem-vindo(a), ${usuario.nome} ✨`;
 
   goTo("home");
+}
+
+/* ========================= */
+/* MENU */
+/* ========================= */
+function irParaDesafio() {
+  carregarDashboard();
+  goTo("dashboard");
+}
+
+function logout() {
+  localStorage.removeItem("usuario");
+  usuario = null;
+  goTo("splash");
 }
 
 /* ========================= */
@@ -59,8 +73,11 @@ function cadastrar() {
 function carregarDashboard() {
   if (!usuario) return;
 
-  document.getElementById("saudacao").innerText = `Olá, ${usuario.nome} ✨`;
-  document.getElementById("progressoTexto").innerText = `Dia atual: ${progresso}/7`;
+  document.getElementById("saudacao").innerText =
+    `Olá, ${usuario.nome} ✨`;
+
+  document.getElementById("progressoTexto").innerText =
+    `Dia atual: ${progresso}/7`;
 
   const container = document.getElementById("diasContainer");
   container.innerHTML = "";
@@ -123,8 +140,9 @@ function concluirDia() {
 /* ========================= */
 window.onload = () => {
   if (usuario) {
-    carregarDashboard();
-    goTo("dashboard");
+    document.getElementById("boasVindas").innerText =
+      `Bem-vindo(a), ${usuario.nome} ✨`;
+    goTo("home");
   } else {
     goTo("splash");
   }

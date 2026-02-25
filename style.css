@@ -16,7 +16,7 @@ body {
 .screen {
   display: none;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .screen.active {

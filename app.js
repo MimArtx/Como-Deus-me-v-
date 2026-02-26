@@ -293,6 +293,33 @@ function concluirDia() {
   goTo("dashboard");
 }
 
+/* ========================= */
+/* TELA DO DIARIO PARA VISUALIZAR */
+/* ========================= */
+
+
+function abrirDiario() {
+
+  const diarios = JSON.parse(localStorage.getItem("diarios")) || {};
+  const container = document.getElementById("listaDiario");
+
+  container.innerHTML = "";
+
+  for (let dia in diarios) {
+
+    const bloco = document.createElement("div");
+    bloco.className = "card";
+
+    bloco.innerHTML = `
+      <h3>Dia ${dia}</h3>
+      <p>${diarios[dia]}</p>
+    `;
+
+    container.appendChild(bloco);
+  }
+
+  goTo("diario");
+}
 
 /* ========================= */
 /* INICIALIZAÇÃO */

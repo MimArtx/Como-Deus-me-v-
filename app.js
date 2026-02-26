@@ -1,3 +1,6 @@
+/* ========================= */
+/* VARIÁVEIS GLOBAIS */
+/* ========================= */
 let usuario = JSON.parse(localStorage.getItem("usuario"));
 let progresso = Number(localStorage.getItem("progresso")) || 1;
 let diarios = JSON.parse(localStorage.getItem("diarios")) || {};
@@ -41,6 +44,8 @@ function alternarModo() {
   const confirmar = document.querySelector(".cadastro-only");
   const alternarTexto = document.querySelector(".alternar span");
 
+  if (!titulo || !botao || !confirmar || !alternarTexto) return;
+
   if (modoCadastro) {
     titulo.innerText = "Criar Conta";
     botao.innerText = "Cadastrar";
@@ -83,8 +88,10 @@ function acaoAuth() {
       localStorage.setItem("logado", "true");
     }
 
-    document.getElementById("boasVindas").innerText =
-      `Bem-vindo(a), ${usuario.nome} ✨`;
+    const boasVindas = document.getElementById("boasVindas");
+    if (boasVindas) {
+      boasVindas.innerText = `Bem-vindo(a), ${usuario.nome} ✨`;
+    }
 
     alert("Conta criada com sucesso!");
     goTo("home");
@@ -106,8 +113,10 @@ function acaoAuth() {
         localStorage.setItem("logado", "true");
       }
 
-      document.getElementById("boasVindas").innerText =
-        `Bem-vindo(a), ${usuario.nome} ✨`;
+      const boasVindas = document.getElementById("boasVindas");
+      if (boasVindas) {
+        boasVindas.innerText = `Bem-vindo(a), ${usuario.nome} ✨`;
+      }
 
       goTo("home");
 
@@ -118,13 +127,8 @@ function acaoAuth() {
 }
 
 /* ========================= */
-/* MENU */
+/* LOGOUT */
 /* ========================= */
-function irParaDesafio() {
-  carregarDashboard();
-  goTo("dashboard");
-}
-
 function logout() {
   localStorage.removeItem("logado");
   usuario = null;
@@ -141,13 +145,20 @@ function carregarDashboard() {
   progresso = Number(localStorage.getItem("progresso")) || 1;
   diarios = JSON.parse(localStorage.getItem("diarios")) || {};
 
-  document.getElementById("saudacao").innerText =
-    `Olá, ${usuario.nome} ✨`;
-
-  document.getElementById("progressoTexto").innerText =
-    `Dia atual: ${progresso}/7`;
-
+  const saudacao = document.getElementById("saudacao");
+  const progressoTexto = document.getElementById("progressoTexto");
   const container = document.getElementById("diasContainer");
+
+  if (!container) return;
+
+  if (saudacao) {
+    saudacao.innerText = `Olá, ${usuario.nome} ✨`;
+  }
+
+  if (progressoTexto) {
+    progressoTexto.innerText = `Dia atual: ${progresso}/7`;
+  }
+
   container.innerHTML = "";
 
   for (let i = 1; i <= 7; i++) {
@@ -169,28 +180,13 @@ function carregarDashboard() {
     container.appendChild(card);
   }
 }
-function irParaDia() {
-  alert("Tela do Desafio do Dia");
-}
 
-function irParaDiario() {
-  alert("Tela do Diário Espiritual");
-}
-
-function irParaRanking() {
-  alert("Tela de Ranking");
-}
-
-function logout() {
-  mostrarTela("auth"); // ou o id da sua tela de login
-}
 /* ========================= */
 /* ABRIR DIA */
 /* ========================= */
 function abrirDia(dia) {
 
   diaAtual = dia;
-
   diarios = JSON.parse(localStorage.getItem("diarios")) || {};
 
   document.getElementById("tituloDia").innerText = `Dia ${dia}`;
@@ -237,9 +233,8 @@ window.onload = () => {
     usuario = JSON.parse(localStorage.getItem("usuario"));
 
     if (usuario) {
-      document.getElementById("boasVindas").innerText =
-        `Bem-vindo(a), ${usuario.nome} ✨`;
       goTo("home");
+      carregarDashboard();
       return;
     }
   }

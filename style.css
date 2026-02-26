@@ -1,173 +1,93 @@
-/* ========================= */
 /* RESET */
-/* ========================= */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ========================= */
-/* BODY */
-/* ========================= */
-body {
-  font-family: 'Montserrat', Arial, sans-serif;
-  background: linear-gradient(180deg, #ff5a00 0%, #ff3c00 55%, #111 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  color: white;
-}
-
-/* ========================= */
-/* APP CONTAINER */
-/* ========================= */
-#app {
-  width: 100%;
-  max-width: 400px;
-  padding: 28px;
-  border-radius: 28px;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-}
-
-/* ========================= */
-/* TELAS */
-/* ========================= */
+/* TELA BASE */
 .screen {
   display: none;
-  flex-direction: column;
-  gap: 24px;
-  animation: fadeUp 0.4s ease;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
 .screen.active {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* ========================= */
-/* TÍTULOS */
-/* ========================= */
-h1 {
-  font-size: 30px;
-  font-weight: 900;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+/* ===== TELA START ===== */
+
+.start-screen {
+  background: url("imagem.jpg") no-repeat center center;
+  background-size: cover;
+  position: relative;
 }
 
-h2 {
-  font-size: 22px;
-  font-weight: 700;
-  text-align: center;
+/* Camada escura por cima da imagem */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0.7)
+  );
 }
 
-/* ========================= */
-/* TEXTOS */
-/* ========================= */
-p {
-  text-align: center;
-  font-size: 15px;
-  opacity: 0.85;
-}
-
-/* ========================= */
-/* INPUTS */
-/* ========================= */
-input,
-textarea {
-  padding: 15px;
-  border-radius: 18px;
-  border: none;
-  font-size: 16px;
-  width: 100%;
-  background: #ffffff;
-  color: #111;
-}
-
-input:focus,
-textarea:focus {
-  outline: 2px solid #ff5a00;
-}
-
-/* ========================= */
-/* TEXTAREA */
-/* ========================= */
-textarea {
-  min-height: 150px;
-  resize: none;
-}
-
-/* ========================= */
-/* BOTÕES */
-/* ========================= */
-button {
-  padding: 16px;
-  border: none;
-  border-radius: 35px;
-  background: linear-gradient(90deg, #ff5a00, #ff2e00);
-  color: white;
-  font-weight: 800;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-}
-
-button:hover {
-  transform: translateY(-4px) scale(1.03);
-}
-
-/* ========================= */
-/* CARDS DOS DIAS */
-/* ========================= */
-.card-dia {
-  background: #ffffff;
-  color: #111;
-  padding: 20px;
+/* Card central */
+.start-card {
+  position: relative;
+  z-index: 2;
+  width: 85%;
+  max-width: 400px;
+  padding: 40px 25px;
   border-radius: 25px;
-  font-weight: 800;
-  font-size: 18px;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+
   text-align: center;
+  color: white;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Título */
+.start-card h1 {
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.start-card p {
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+/* Botão */
+.start-card button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
+
+  background: linear-gradient(45deg, #ff4d00, #ff1a00);
+  color: white;
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   transition: 0.3s;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
-.card-dia:hover {
-  transform: translateY(-6px);
-}
-
-/* ========================= */
-/* LISTA DO DIÁRIO */
-/* ========================= */
-#listaDiario {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-#listaDiario div {
-  background: #ffffff;
-  color: #111;
-  padding: 14px;
-  border-radius: 18px;
-  font-size: 14px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* ========================= */
-/* ANIMAÇÃO */
-/* ========================= */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.start-card button:hover {
+  transform: translateY(-3px);
 }

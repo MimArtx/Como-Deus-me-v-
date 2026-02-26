@@ -194,18 +194,25 @@ html, body {
 
 /* Botão voltar */
 .voltar {
-  width: 100%;
-  padding: 12px;
-  border-radius: 25px;
-  margin-top: 15px;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
 
-  background: transparent;
-  border: 1px solid #555;
-  color: #ccc;
+  padding: 12px 22px;
+  border-radius: 30px;
+
+  background: linear-gradient(45deg, #ff4d00, #ff1a00);
+  border: none;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: 0.3s ease;
+
+  width: auto; /* importante */
 }
 
 .voltar:hover {
-  background: #222;
+  transform: translateY(-3px);
 }

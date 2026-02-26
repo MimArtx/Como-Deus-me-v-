@@ -209,19 +209,6 @@ html, body {
 }
 
 /* =========================
-   RESPONSIVO
-========================= */
-@media (max-width: 480px) {
-  .splash-card,
-  .auth-card {
-    padding: 30px 20px;
-  }
-
-  .splash-card h1 {
-    font-size: 22px;
-  }
-
-   /* =========================
    HOME
 ========================= */
 #home {
@@ -273,5 +260,17 @@ html, body {
   margin-bottom: 0;
 }
 
-   
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 480px) {
+  .splash-card,
+  .auth-card,
+  .home-card {
+    padding: 30px 20px;
+  }
+
+  .splash-card h1 {
+    font-size: 22px;
+  }
 }

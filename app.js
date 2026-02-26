@@ -146,7 +146,5 @@ window.onload = () => {
   } else {
     goTo("splash");
   }
-  function goBack() {
-  goTo("dashboard");
-}
+  
 };

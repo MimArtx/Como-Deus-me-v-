@@ -54,6 +54,9 @@ function alternarModo() {
   }
 }
 
+
+
+
 function acaoAuth() {
   const nome = document.getElementById("nome").value;
   const email = document.getElementById("email").value;
@@ -100,6 +103,20 @@ function acaoAuth() {
     }
   }
 }
+
+
+/* LOGIN AUTOMÁTICO*/
+
+window.onload = function() {
+  const logado = localStorage.getItem("logado");
+
+  if (logado === "true") {
+    goTo("home");
+  } else {
+    goTo("splash");
+  }
+};
+
 
 /* ========================= */
 /* MENU */

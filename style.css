@@ -220,4 +220,58 @@ html, body {
   .splash-card h1 {
     font-size: 22px;
   }
+
+   /* =========================
+   HOME
+========================= */
+#home {
+  background: linear-gradient(to bottom, #000, #111);
+  padding: 20px;
+}
+
+.home-card {
+  width: 100%;
+  max-width: 420px;
+  background: #1c1c1c;
+  padding: 40px 30px;
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.home-card h2 {
+  margin-bottom: 30px;
+  font-size: 22px;
+}
+
+.home-card button {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+
+  border: none;
+  border-radius: 30px;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  background: linear-gradient(45deg, #ff4d00, #ff1a00);
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+.home-card button:hover {
+  transform: translateY(-3px);
+}
+
+.home-card button:last-child {
+  margin-bottom: 0;
+}
+
+   
 }

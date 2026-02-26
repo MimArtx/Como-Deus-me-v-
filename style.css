@@ -41,7 +41,6 @@ html, body {
   background-repeat: no-repeat;
 }
 
-/* Overlay */
 .overlay {
   position: absolute;
   inset: 0;
@@ -52,7 +51,6 @@ html, body {
   );
 }
 
-/* Card Splash */
 .splash-card {
   position: relative;
   z-index: 2;
@@ -83,7 +81,6 @@ html, body {
   opacity: 0.9;
 }
 
-/* Botão principal */
 .splash-card button {
   width: 100%;
   padding: 15px;
@@ -110,9 +107,6 @@ html, body {
 ========================= */
 .auth-screen {
   background: linear-gradient(to bottom, #000, #111);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 20px;
 }
 
@@ -125,6 +119,8 @@ html, body {
   color: white;
   text-align: center;
 
+  position: relative;
+
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
@@ -133,7 +129,6 @@ html, body {
   font-size: 24px;
 }
 
-/* Inputs */
 .auth-card input {
   width: 100%;
   padding: 14px;
@@ -147,7 +142,6 @@ html, body {
   font-size: 14px;
 }
 
-/* Checkbox lembrar */
 .lembrar {
   display: flex;
   align-items: center;
@@ -162,7 +156,6 @@ html, body {
   height: 18px;
 }
 
-/* Botão principal */
 .auth-card button {
   width: 100%;
   padding: 14px;
@@ -180,7 +173,6 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* Link alternar */
 .alternar {
   margin-top: 18px;
   font-size: 14px;
@@ -192,11 +184,10 @@ html, body {
   font-weight: bold;
 }
 
-/* Botão voltar */
 .voltar {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
+  position: absolute;
+  bottom: -60px;
+  right: 0;
 
   padding: 12px 22px;
   border-radius: 30px;
@@ -210,9 +201,23 @@ html, body {
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
   transition: 0.3s ease;
 
-  width: auto; /* importante */
+  width: auto;
 }
 
 .voltar:hover {
   transform: translateY(-3px);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 480px) {
+  .splash-card,
+  .auth-card {
+    padding: 30px 20px;
+  }
+
+  .splash-card h1 {
+    font-size: 22px;
+  }
 }

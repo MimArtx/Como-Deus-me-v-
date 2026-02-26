@@ -32,21 +32,39 @@
 
 
     <!-- ===== CADASTRO ===== -->
-    <section id="cadastro" class="screen">
-      <h2>Bem-vindo 💛</h2>
+<section id="auth" class="screen auth-screen">
 
-      <input type="text" id="nome" placeholder="Nome">
-      <input type="number" id="idade" placeholder="Idade">
-      <input type="tel" id="telefone" placeholder="Telefone">
+  <div class="auth-card">
 
-      <button type="button" onclick="cadastrar()">
-        Entrar no desafio
-      </button>
+    <h2 id="authTitulo">Criar Conta</h2>
 
-      <button type="button" onclick="goTo('splash')">
-        Voltar
-      </button>
-    </section>
+    <input type="text" id="nome" placeholder="Nome completo">
+    <input type="email" id="email" placeholder="E-mail">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only">
+
+    <label class="lembrar">
+      <input type="checkbox" id="lembrar">
+      Lembrar-me
+    </label>
+
+    <button onclick="acaoAuth()" id="botaoAuth">
+      Cadastrar
+    </button>
+
+    <p class="alternar">
+      Já tem conta? 
+      <span onclick="alternarModo()">Entrar</span>
+    </p>
+
+    <button onclick="goTo('splash')" class="voltar">
+      Voltar
+    </button>
+
+  </div>
+
+</section>
 
 
     <!-- ===== HOME ===== -->

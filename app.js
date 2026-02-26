@@ -1,4 +1,4 @@
-let usuario = JSON.parse(localStorage.getItem("usuario")) || null;
+let usuario = JSON.parse(localStorage.getItem("usuario"));
 let progresso = Number(localStorage.getItem("progresso")) || 1;
 let diarios = JSON.parse(localStorage.getItem("diarios")) || {};
 let diaAtual = null;
@@ -29,7 +29,7 @@ function goTo(screenId) {
 }
 
 /* ========================= */
-/* CADASTRO */
+/* CADASTRO / LOGIN */
 /* ========================= */
 let modoCadastro = true;
 
@@ -53,15 +53,17 @@ function alternarModo() {
     alternarTexto.innerText = "Criar conta";
   }
 }
+
 function acaoAuth() {
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-  const confirmarSenha = document.getElementById("confirmarSenha").value;
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const senha = document.getElementById("senha").value.trim();
+  const confirmarSenha = document.getElementById("confirmarSenha").value.trim();
   const lembrar = document.getElementById("lembrar").checked;
 
   if (modoCadastro) {
-    if (!nome || !email || !senha) {
+
+    if (!nome || !email || !senha || !confirmarSenha) {
       alert("Preencha todos os campos.");
       return;
     }
@@ -71,16 +73,24 @@ function acaoAuth() {
       return;
     }
 
-    const usuario = { nome, email, senha };
+    usuario = { nome, email, senha };
+
     localStorage.setItem("usuario", JSON.stringify(usuario));
+    localStorage.setItem("progresso", "1");
+    localStorage.setItem("diarios", JSON.stringify({}));
 
     if (lembrar) {
       localStorage.setItem("logado", "true");
     }
 
+    document.getElementById("boasVindas").innerText =
+      `Bem-vindo(a), ${usuario.nome} ✨`;
+
     alert("Conta criada com sucesso!");
     goTo("home");
+
   } else {
+
     const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
 
     if (!usuarioSalvo) {
@@ -89,30 +99,23 @@ function acaoAuth() {
     }
 
     if (email === usuarioSalvo.email && senha === usuarioSalvo.senha) {
+
+      usuario = usuarioSalvo;
+
       if (lembrar) {
         localStorage.setItem("logado", "true");
       }
 
+      document.getElementById("boasVindas").innerText =
+        `Bem-vindo(a), ${usuario.nome} ✨`;
+
       goTo("home");
+
     } else {
       alert("E-mail ou senha incorretos.");
     }
   }
 }
-
-
-/* LOGIN AUTOMÁTICO*/
-
-window.onload = function() {
-  const logado = localStorage.getItem("logado");
-
-  if (logado === "true") {
-    goTo("home");
-  } else {
-    goTo("splash");
-  }
-};
-
 
 /* ========================= */
 /* MENU */
@@ -123,7 +126,7 @@ function irParaDesafio() {
 }
 
 function logout() {
-  localStorage.removeItem("usuario");
+  localStorage.removeItem("logado");
   usuario = null;
   goTo("splash");
 }
@@ -132,7 +135,11 @@ function logout() {
 /* DASHBOARD */
 /* ========================= */
 function carregarDashboard() {
+
   if (!usuario) return;
+
+  progresso = Number(localStorage.getItem("progresso")) || 1;
+  diarios = JSON.parse(localStorage.getItem("diarios")) || {};
 
   document.getElementById("saudacao").innerText =
     `Olá, ${usuario.nome} ✨`;
@@ -144,15 +151,18 @@ function carregarDashboard() {
   container.innerHTML = "";
 
   for (let i = 1; i <= 7; i++) {
+
     const card = document.createElement("div");
     card.className = "card-dia";
 
     if (i < progresso) {
       card.innerText = `Dia ${i} ✔`;
-    } else if (i === progresso) {
+    } 
+    else if (i === progresso) {
       card.innerText = `Dia ${i} 🔓`;
       card.onclick = () => abrirDia(i);
-    } else {
+    } 
+    else {
       card.innerText = `Dia ${i} 🔒`;
     }
 
@@ -164,7 +174,10 @@ function carregarDashboard() {
 /* ABRIR DIA */
 /* ========================= */
 function abrirDia(dia) {
+
   diaAtual = dia;
+
+  diarios = JSON.parse(localStorage.getItem("diarios")) || {};
 
   document.getElementById("tituloDia").innerText = `Dia ${dia}`;
   document.getElementById("conteudoDia").innerText = conteudos[dia];
@@ -177,6 +190,7 @@ function abrirDia(dia) {
 /* CONCLUIR DIA */
 /* ========================= */
 function concluirDia() {
+
   const texto = document.getElementById("textoDiario").value.trim();
 
   if (!texto) {
@@ -186,6 +200,8 @@ function concluirDia() {
 
   diarios[diaAtual] = texto;
   localStorage.setItem("diarios", JSON.stringify(diarios));
+
+  progresso = Number(localStorage.getItem("progresso")) || 1;
 
   if (progresso < 7) {
     progresso++;
@@ -197,15 +213,22 @@ function concluirDia() {
 }
 
 /* ========================= */
-/* CARREGAMENTO INICIAL */
+/* INICIALIZAÇÃO */
 /* ========================= */
 window.onload = () => {
-  if (usuario) {
-    document.getElementById("boasVindas").innerText =
-      `Bem-vindo(a), ${usuario.nome} ✨`;
-    goTo("home");
-  } else {
-    goTo("splash");
+
+  const logado = localStorage.getItem("logado");
+
+  if (logado === "true") {
+    usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    if (usuario) {
+      document.getElementById("boasVindas").innerText =
+        `Bem-vindo(a), ${usuario.nome} ✨`;
+      goTo("home");
+      return;
+    }
   }
-  
+
+  goTo("splash");
 };

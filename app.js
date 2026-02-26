@@ -169,7 +169,21 @@ function carregarDashboard() {
     container.appendChild(card);
   }
 }
+function irParaDia() {
+  alert("Tela do Desafio do Dia");
+}
 
+function irParaDiario() {
+  alert("Tela do Diário Espiritual");
+}
+
+function irParaRanking() {
+  alert("Tela de Ranking");
+}
+
+function logout() {
+  mostrarTela("auth"); // ou o id da sua tela de login
+}
 /* ========================= */
 /* ABRIR DIA */
 /* ========================= */

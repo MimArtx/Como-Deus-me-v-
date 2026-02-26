@@ -203,7 +203,7 @@ function carregarDashboard() {
   }
 }
 /* LIBERAR DESAFIO NO DIA */
-/*==========================/
+/*==========================*/
 
 
 function desafioDisponivel() {

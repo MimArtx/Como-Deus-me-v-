@@ -31,26 +31,74 @@ function goTo(screenId) {
 /* ========================= */
 /* CADASTRO */
 /* ========================= */
-function cadastrar() {
-  const nome = document.getElementById("nome").value.trim();
+let modoCadastro = true;
 
-  if (!nome) {
-    alert("Digite seu nome para continuar 💛");
-    return;
+function alternarModo() {
+  modoCadastro = !modoCadastro;
+
+  const titulo = document.getElementById("authTitulo");
+  const botao = document.getElementById("botaoAuth");
+  const confirmar = document.querySelector(".cadastro-only");
+  const alternarTexto = document.querySelector(".alternar span");
+
+  if (modoCadastro) {
+    titulo.innerText = "Criar Conta";
+    botao.innerText = "Cadastrar";
+    confirmar.style.display = "block";
+    alternarTexto.innerText = "Entrar";
+  } else {
+    titulo.innerText = "Entrar";
+    botao.innerText = "Login";
+    confirmar.style.display = "none";
+    alternarTexto.innerText = "Criar conta";
   }
+}
 
-  usuario = { nome };
-  progresso = 1;
-  diarios = {};
+function acaoAuth() {
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+  const confirmarSenha = document.getElementById("confirmarSenha").value;
+  const lembrar = document.getElementById("lembrar").checked;
 
-  localStorage.setItem("usuario", JSON.stringify(usuario));
-  localStorage.setItem("progresso", progresso);
-  localStorage.setItem("diarios", JSON.stringify(diarios));
+  if (modoCadastro) {
+    if (!nome || !email || !senha) {
+      alert("Preencha todos os campos.");
+      return;
+    }
 
-  document.getElementById("boasVindas").innerText =
-    `Bem-vindo(a), ${usuario.nome} ✨`;
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem.");
+      return;
+    }
 
-  goTo("home");
+    const usuario = { nome, email, senha };
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+
+    if (lembrar) {
+      localStorage.setItem("logado", "true");
+    }
+
+    alert("Conta criada com sucesso!");
+    goTo("home");
+  } else {
+    const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
+
+    if (!usuarioSalvo) {
+      alert("Nenhuma conta encontrada.");
+      return;
+    }
+
+    if (email === usuarioSalvo.email && senha === usuarioSalvo.senha) {
+      if (lembrar) {
+        localStorage.setItem("logado", "true");
+      }
+
+      goTo("home");
+    } else {
+      alert("E-mail ou senha incorretos.");
+    }
+  }
 }
 
 /* ========================= */

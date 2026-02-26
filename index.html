@@ -66,26 +66,39 @@
 
 
     <!-- ===== HOME ===== -->
-    <section id="home" class="screen">
-
+   
+<section id="home" class="screen">
   <div class="home-card">
+    <h2>Bem-vindo ao Desafio</h2>
 
-    <h2 id="boasVindas"></h2>
+    <div class="dashboard">
 
-    <button type="button" onclick="irParaDesafio()">
-      🌟 Desafio 7 Dias
-    </button>
+      <div class="card" onclick="irParaDia()">
+        <div class="icon">🔥</div>
+        <h3>Desafio do Dia</h3>
+        <p>Veja o desafio de hoje</p>
+      </div>
 
-    <button type="button" onclick="goTo('diario')">
-      📖 Meu Diário
-    </button>
+      <div class="card" onclick="irParaDiario()">
+        <div class="icon">📖</div>
+        <h3>Diário Espiritual</h3>
+        <p>Registre sua jornada</p>
+      </div>
 
-    <button type="button" onclick="logout()">
-      🚪 Sair
-    </button>
+      <div class="card" onclick="irParaRanking()">
+        <div class="icon">🏆</div>
+        <h3>Ranking</h3>
+        <p>Veja sua posição</p>
+      </div>
 
+      <div class="card" onclick="logout()">
+        <div class="icon">🚪</div>
+        <h3>Sair</h3>
+        <p>Encerrar sessão</p>
+      </div>
+
+    </div>
   </div>
-
 </section>
 
 

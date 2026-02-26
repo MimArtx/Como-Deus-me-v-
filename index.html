@@ -15,15 +15,13 @@
     <!-- ===== TELA INICIAL ===== -->
     <section id="splash" class="screen active splash-screen">
 
-
-      <!-- Overlay escuro -->
       <div class="overlay"></div>
 
       <div class="splash-card">
         <h1>DESAFIO 7 DIAS</h1>
         <p>Como Deus Me Vê?</p>
 
-        <button type="button" onclick="goTo('cadastro')">
+        <button type="button" onclick="goTo('auth')">
           Começar
         </button>
       </div>
@@ -31,55 +29,55 @@
     </section>
 
 
-    <!-- ===== CADASTRO ===== -->
-<section id="auth" class="screen auth-screen">
+    <!-- ===== CADASTRO / LOGIN ===== -->
+    <section id="auth" class="screen auth-screen">
 
-  <div class="auth-card">
+      <div class="auth-card">
 
-    <h2 id="authTitulo">Criar Conta</h2>
+        <h2 id="authTitulo">Criar Conta</h2>
 
-    <input type="text" id="nome" placeholder="Nome completo">
-    <input type="email" id="email" placeholder="E-mail">
-    <input type="password" id="senha" placeholder="Senha">
+        <input type="text" id="nome" placeholder="Nome completo" autocomplete="name">
+        <input type="email" id="email" placeholder="E-mail" autocomplete="email">
+        <input type="password" id="senha" placeholder="Senha" autocomplete="new-password">
 
-    <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only">
+        <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only">
 
-    <label class="lembrar">
-      <input type="checkbox" id="lembrar">
-      Lembrar-me
-    </label>
+        <label class="lembrar">
+          <input type="checkbox" id="lembrar">
+          Lembrar-me
+        </label>
 
-    <button onclick="acaoAuth()" id="botaoAuth">
-      Cadastrar
-    </button>
+        <button type="button" onclick="acaoAuth()" id="botaoAuth">
+          Cadastrar
+        </button>
 
-    <p class="alternar">
-      Já tem conta? 
-      <span onclick="alternarModo()">Entrar</span>
-    </p>
+        <p class="alternar">
+          Já tem conta?
+          <span onclick="alternarModo()">Entrar</span>
+        </p>
 
-    <button onclick="goTo('splash')" class="voltar">
-      Voltar
-    </button>
+        <button type="button" onclick="goTo('splash')" class="voltar">
+          Voltar
+        </button>
 
-  </div>
+      </div>
 
-</section>
+    </section>
 
 
     <!-- ===== HOME ===== -->
     <section id="home" class="screen">
       <h2 id="boasVindas"></h2>
 
-      <button onclick="irParaDesafio()">
+      <button type="button" onclick="irParaDesafio()">
         🌟 Desafio 7 Dias
       </button>
 
-      <button onclick="goTo('diario')">
+      <button type="button" onclick="goTo('diario')">
         📖 Meu Diário
       </button>
 
-      <button onclick="logout()">
+      <button type="button" onclick="logout()">
         🚪 Sair
       </button>
     </section>
@@ -105,8 +103,8 @@
 
       <textarea 
         id="textoDiario" 
-        placeholder="Escreva aqui o que Deus falou com você...">
-      </textarea>
+        placeholder="Escreva aqui o que Deus falou com você..."
+      ></textarea>
 
       <button type="button" onclick="concluirDia()">
         Concluir Dia
@@ -131,7 +129,6 @@
 
   </div>
 
-  <!-- SCRIPT SEM DUPLICAÇÃO -->
   <script src="app.js"></script>
 
 </body>

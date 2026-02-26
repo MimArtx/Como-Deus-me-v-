@@ -6,16 +6,37 @@ let progresso = Number(localStorage.getItem("progresso")) || 1;
 let diarios = JSON.parse(localStorage.getItem("diarios")) || {};
 let diaAtual = null;
 
-const conteudos = {
-  1: "Deus me vê como amado(a).",
-  2: "Deus me vê como filho(a).",
-  3: "Deus me vê como escolhido(a).",
-  4: "Deus me vê como perdoado(a).",
-  5: "Deus me vê como obra-prima.",
-  6: "Deus me vê com propósito.",
-  7: "Deus me vê como vencedor(a)."
+  const desafios = {
+  1: {
+    frase: "Deus me vê como amado(a).",
+    versiculo: "‘Com amor eterno eu te amei; por isso com bondade te atraí.’ – Jeremias 31:3"
+  },
+  2: {
+    frase: "Deus me vê como filho(a).",
+    versiculo: "‘Mas a todos quantos o receberam, deu-lhes o poder de serem feitos filhos de Deus.’ – João 1:12"
+  },
+  3: {
+    frase: "Deus me vê como escolhido(a).",
+    versiculo: "‘Vocês são geração eleita.’ – 1 Pedro 2:9"
+  },
+  4: {
+    frase: "Deus me vê como perdoado(a).",
+    versiculo: "‘Se confessarmos os nossos pecados, Ele é fiel e justo para nos perdoar.’ – 1 João 1:9"
+  },
+  5: {
+    frase: "Deus me vê como obra-prima.",
+    versiculo: "‘Somos feitura dele.’ – Efésios 2:10"
+  },
+  6: {
+    frase: "Deus me vê com propósito.",
+    versiculo: "‘Porque sou eu que conheço os planos que tenho para vocês.’ – Jeremias 29:11"
+  },
+  7: {
+    frase: "Deus me vê como vencedor(a).",
+    versiculo: "‘Em todas estas coisas somos mais que vencedores.’ – Romanos 8:37"
+  }
 };
-
+  
 /* ========================= */
 /* TROCA DE TELAS */
 /* ========================= */

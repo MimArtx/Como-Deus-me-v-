@@ -4,24 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desafio 7 Dias | Como Deus Me Vê?</title>
- <link rel="stylesheet" href="style.css">
-<script src="app.js"></script>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <div id="app">
 
-    <!-- Splash Screen -->
-    <section id="splash" class="screen active">
-      <h1>Desafio 7 Dias</h1>
-      <p>Como Deus Me Vê?</p>
-      <button type="button" onclick="goTo('cadastro')">
-        Começar
-      </button>
+    <!-- ===== TELA INICIAL ===== -->
+    <section id="splash" class="screen active splash-screen">
+
+      <!-- Overlay escuro -->
+      <div class="overlay"></div>
+
+      <div class="splash-card">
+        <h1>DESAFIO 7 DIAS</h1>
+        <p>Como Deus Me Vê?</p>
+
+        <button type="button" onclick="goTo('cadastro')">
+          Começar
+        </button>
+      </div>
+
     </section>
 
-    <!-- Cadastro -->
+
+    <!-- ===== CADASTRO ===== -->
     <section id="cadastro" class="screen">
       <h2>Bem-vindo 💛</h2>
 
@@ -32,35 +41,45 @@
       <button type="button" onclick="cadastrar()">
         Entrar no desafio
       </button>
+
+      <button type="button" onclick="goTo('splash')">
+        Voltar
+      </button>
     </section>
 
-<!-- Home -->
-<section id="home" class="screen">
-  <h2 id="boasVindas"></h2>
 
-  <button onclick="irParaDesafio()">
-    🌟 Desafio 7 Dias
-  </button>
+    <!-- ===== HOME ===== -->
+    <section id="home" class="screen">
+      <h2 id="boasVindas"></h2>
 
-  <button onclick="logout()">
-    🚪 Sair
-  </button>
-</section>
+      <button onclick="irParaDesafio()">
+        🌟 Desafio 7 Dias
+      </button>
+
+      <button onclick="goTo('diario')">
+        📖 Meu Diário
+      </button>
+
+      <button onclick="logout()">
+        🚪 Sair
+      </button>
+    </section>
 
 
-    <!-- Dashboard -->
+    <!-- ===== DASHBOARD ===== -->
     <section id="dashboard" class="screen">
       <h2 id="saudacao"></h2>
       <p id="progressoTexto"></p>
 
       <div id="diasContainer"></div>
 
-      <button type="button" onclick="goTo('diario')">
-        Meu Diário
+      <button type="button" onclick="goTo('home')">
+        Voltar
       </button>
     </section>
 
-    <!-- Tela Dia -->
+
+    <!-- ===== DIA ESPECÍFICO ===== -->
     <section id="dia" class="screen">
       <h2 id="tituloDia"></h2>
       <p id="conteudoDia"></p>
@@ -73,21 +92,28 @@
       <button type="button" onclick="concluirDia()">
         Concluir Dia
       </button>
-    </section>
-
-    <!-- Diário Geral -->
-    <section id="diario" class="screen">
-      <h2>Meu Diário 💛</h2>
-      <div id="listaDiario"></div>
 
       <button type="button" onclick="goTo('dashboard')">
         Voltar
       </button>
     </section>
 
+
+    <!-- ===== DIÁRIO GERAL ===== -->
+    <section id="diario" class="screen">
+      <h2>Meu Diário 💛</h2>
+
+      <div id="listaDiario"></div>
+
+      <button type="button" onclick="goTo('home')">
+        Voltar
+      </button>
+    </section>
+
   </div>
 
-  <script src="js/app.js"></script>
+  <!-- SCRIPT SEM DUPLICAÇÃO -->
+  <script src="app.js"></script>
 
 </body>
 </html>

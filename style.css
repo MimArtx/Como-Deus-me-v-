@@ -102,3 +102,71 @@ html, body {
 .splash-card button:hover {
   transform: translateY(-3px);
 }
+
+/*Cadastro*/
+.auth-screen {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: 90%;
+  max-width: 400px;
+  background: #1c1c1c;
+  padding: 30px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #ff4d00, #ff1a00);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.alternar {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.alternar span {
+  color: #ff4d00;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.voltar {
+  background: transparent;
+  margin-top: 10px;
+  border: 1px solid #555;
+}
+
+.lembrar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}

@@ -52,6 +52,7 @@ function goTo(screenId) {
   }
 }
 
+
 /* ========================= */
 /* CADASTRO / LOGIN */
 /* ========================= */
@@ -201,20 +202,69 @@ function carregarDashboard() {
     container.appendChild(card);
   }
 }
+/* LIBERAR DESAFIO NO DIA */
+/*==========================/
+
+
+function desafioDisponivel() {
+  const agora = new Date();
+  const hora = agora.getHours();
+  return hora >= 6 && hora < 24;
+}
+ 
 
 /* ========================= */
 /* ABRIR DIA */
 /* ========================= */
-function abrirDia(dia) {
+function abrirDesafio() {
 
-  diaAtual = dia;
-  diarios = JSON.parse(localStorage.getItem("diarios")) || {};
+  if (!desafioDisponivel()) {
+    alert("O desafio estará disponível das 06:00 às 00:00 🙏");
+    return;
+  }
 
-  document.getElementById("tituloDia").innerText = `Dia ${dia}`;
-  document.getElementById("conteudoDia").innerText = conteudos[dia];
-  document.getElementById("textoDiario").value = diarios[dia] || "";
+  const dia = Number(localStorage.getItem("progresso")) || 1;
 
-  goTo("dia");
+  const desafio = desafios[dia];
+
+  if (!desafio) {
+    alert("Todos os desafios já foram concluídos 🎉");
+    return;
+  }
+
+  document.getElementById("tituloDesafio").innerText = `Desafio do Dia ${dia}`;
+  document.getElementById("fraseDesafio").innerText = desafio.frase;
+  document.getElementById("versiculoDesafio").innerText = desafio.versiculo;
+
+  goTo("desafio");
+}
+
+/* CONCLUIR DESAFIO */
+
+function concluirDesafio() {
+
+  const texto = document.getElementById("textoReflexao").value.trim();
+
+  if (!texto) {
+    alert("Escreva sua reflexão antes de concluir 💛");
+    return;
+  }
+
+  let progresso = Number(localStorage.getItem("progresso")) || 1;
+  let diarios = JSON.parse(localStorage.getItem("diarios")) || {};
+
+  diarios[progresso] = texto;
+
+  localStorage.setItem("diarios", JSON.stringify(diarios));
+
+  if (progresso < 7) {
+    progresso++;
+    localStorage.setItem("progresso", progresso);
+  }
+
+  alert("Jornada quase completa ✨");
+
+  goTo("dashboard");
 }
 
 /* ========================= */

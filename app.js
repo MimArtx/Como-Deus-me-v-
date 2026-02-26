@@ -53,10 +53,6 @@ function alternarModo() {
     alternarTexto.innerText = "Criar conta";
   }
 }
-
-
-
-
 function acaoAuth() {
   const nome = document.getElementById("nome").value;
   const email = document.getElementById("email").value;

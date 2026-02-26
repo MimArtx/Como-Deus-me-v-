@@ -222,22 +222,33 @@ function concluirDia() {
   goTo("dashboard");
 }
 
+
 /* ========================= */
 /* INICIALIZAÇÃO */
 /* ========================= */
-window.onload = () => {
+window.addEventListener("DOMContentLoaded", () => {
 
   const logado = localStorage.getItem("logado");
+  const usuarioSalvo = JSON.parse(localStorage.getItem("usuario"));
 
-  if (logado === "true") {
-    usuario = JSON.parse(localStorage.getItem("usuario"));
+  if (logado === "true" && usuarioSalvo) {
 
-    if (usuario) {
-      goTo("home");
-      carregarDashboard();
-      return;
+    usuario = usuarioSalvo;
+
+    // Garante que progresso e diarios existam
+    if (!localStorage.getItem("progresso")) {
+      localStorage.setItem("progresso", "1");
     }
+
+    if (!localStorage.getItem("diarios")) {
+      localStorage.setItem("diarios", JSON.stringify({}));
+    }
+
+    carregarDashboard();
+    goTo("dashboard");
+
+  } else {
+    goTo("splash");
   }
 
-  goTo("splash");
-};
+});

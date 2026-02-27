@@ -14,12 +14,17 @@
   <!-- ===== TELA INICIAL ===== -->
   <section id="splash" class="screen active splash-screen">
     <div class="overlay"></div>
+
     <div class="splash-card">
       <h1>DESAFIO 7 DIAS</h1>
       <p>Como Deus Me Vê?</p>
-      <button onclick="goTo('auth')">Começar</button>
+
+      <button class="btn-primary" onclick="goTo('auth')">
+        Começar
+      </button>
     </div>
   </section>
+
 
   <!-- ===== LOGIN / CADASTRO ===== -->
   <section id="auth" class="screen auth-screen">
@@ -32,12 +37,12 @@
       <input type="password" id="senha" placeholder="Senha">
       <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only">
 
-      <label class="lembrar">
+      <div class="checkbox-area">
         <input type="checkbox" id="lembrar">
-        Lembrar-me
-      </label>
+        <label for="lembrar">Lembrar-me</label>
+      </div>
 
-      <button onclick="acaoAuth()" id="botaoAuth">
+      <button class="btn-primary" onclick="acaoAuth()" id="botaoAuth">
         Cadastrar
       </button>
 
@@ -49,6 +54,7 @@
     </div>
   </section>
 
+
   <!-- ===== HOME ===== -->
   <section id="home" class="screen">
     <div class="home-card">
@@ -56,14 +62,12 @@
 
       <div class="dashboard">
 
-        <!-- CORRIGIDO AQUI -->
         <div class="card" onclick="abrirDesafio()">
           <div class="icon">🔥</div>
           <h3>Desafio do Dia</h3>
           <p>Veja o desafio de hoje</p>
         </div>
 
-        <!-- CORRIGIDO AQUI -->
         <div class="card" onclick="abrirDiario()">
           <div class="icon">📖</div>
           <h3>Diário Espiritual</h3>
@@ -86,6 +90,7 @@
     </div>
   </section>
 
+
   <!-- ===== DESAFIO DO DIA ===== -->
   <section id="desafio" class="screen">
     <div class="home-card">
@@ -99,34 +104,47 @@
       <textarea 
         id="textoReflexao"
         placeholder="Escreva aqui o que você entendeu..."
-        style="width:100%; margin-top:20px; padding:15px; border-radius:15px; border:none; height:120px;">
+        style="height:120px;">
       </textarea>
 
-      <button onclick="concluirDesafio()">Concluir</button>
+      <button class="btn-primary" onclick="concluirDesafio()">
+        Concluir
+      </button>
 
     </div>
   </section>
 
+
   <!-- ===== JORNADA ===== -->
-  <section id="dashboard" class="screen">
-    <h2 id="saudacao"></h2>
-    <p id="progressoTexto"></p>
+  <section id="dashboard" class="screen auth-screen">
+    <div class="home-card">
 
-    <div id="diasContainer"></div>
+      <h2 id="saudacao"></h2>
+      <p id="progressoTexto" style="margin-bottom:20px;"></p>
 
-    <button onclick="goTo('home')">
-      Voltar
-    </button>
+      <div id="diasContainer"></div>
+
+      <button class="btn-primary" onclick="goTo('home')">
+        Voltar
+      </button>
+
+    </div>
   </section>
 
-  <!-- ===== DIÁRIO ===== -->
-  <section id="diario" class="screen">
-    <h2>Meu Diário 💛</h2>
-    <div id="listaDiario"></div>
 
-    <button onclick="goTo('home')">
-      Voltar
-    </button>
+  <!-- ===== DIÁRIO ===== -->
+  <section id="diario" class="screen auth-screen">
+    <div class="home-card">
+
+      <h2>Meu Diário 💛</h2>
+
+      <div id="listaDiario" style="margin:20px 0;"></div>
+
+      <button class="btn-primary" onclick="goTo('home')">
+        Voltar
+      </button>
+
+    </div>
   </section>
 
 </div>

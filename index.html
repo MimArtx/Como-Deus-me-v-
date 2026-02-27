@@ -4,172 +4,134 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Desafio 7 Dias | Como Deus Me Vê?</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div id="app">
+<div id="app">
 
-    <!-- ===== TELA INICIAL ===== -->
-    <section id="splash" class="screen active splash-screen">
+  <!-- ===== TELA INICIAL ===== -->
+  <section id="splash" class="screen active splash-screen">
+    <div class="overlay"></div>
+    <div class="splash-card">
+      <h1>DESAFIO 7 DIAS</h1>
+      <p>Como Deus Me Vê?</p>
+      <button onclick="goTo('auth')">Começar</button>
+    </div>
+  </section>
 
-      <div class="overlay"></div>
+  <!-- ===== LOGIN / CADASTRO ===== -->
+  <section id="auth" class="screen auth-screen">
+    <div class="auth-card">
 
-      <div class="splash-card">
-        <h1>DESAFIO 7 DIAS</h1>
-        <p>Como Deus Me Vê?</p>
+      <h2 id="authTitulo">Criar Conta</h2>
 
-        <button type="button" onclick="goTo('auth')">
-          Começar
-        </button>
-      </div>
+      <input type="text" id="nome" placeholder="Nome completo">
+      <input type="email" id="email" placeholder="E-mail">
+      <input type="password" id="senha" placeholder="Senha">
+      <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only">
 
-    </section>
+      <label class="lembrar">
+        <input type="checkbox" id="lembrar">
+        Lembrar-me
+      </label>
 
+      <button onclick="acaoAuth()" id="botaoAuth">
+        Cadastrar
+      </button>
 
-    <!-- ===== CADASTRO / LOGIN ===== -->
-    <section id="auth" class="screen auth-screen">
-
-      <div class="auth-card">
-
-        <h2 id="authTitulo">Criar Conta</h2>
-
-        <input type="text" id="nome" placeholder="Nome completo" autocomplete="name">
-        <input type="email" id="email" placeholder="E-mail" autocomplete="email">
-        <input type="password" id="senha" placeholder="Senha" autocomplete="new-password">
-
-        <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only">
-
-        <label class="lembrar">
-          <input type="checkbox" id="lembrar">
-          Lembrar-me
-        </label>
-
-        <button type="button" onclick="acaoAuth()" id="botaoAuth">
-          Cadastrar
-        </button>
-
-        <p class="alternar">
-          Já tem conta?
-          <span onclick="alternarModo()">Entrar</span>
-        </p>
-
-        
-
-      </div>
-
-    </section>
-
-
-    <!-- ===== HOME ===== -->
-   
-<section id="home" class="screen">
-  <div class="home-card">
-    <h2>Bem-vindo ao Desafio</h2>
-
-    <div class="dashboard">
-
-      <div class="card" onclick="irParaDia()">
-        <div class="icon">🔥</div>
-        <h3>Desafio do Dia</h3>
-        <p>Veja o desafio de hoje</p>
-      </div>
-
-      <div class="card" onclick="irParaDiario()">
-        <div class="icon">📖</div>
-        <h3>Diário Espiritual</h3>
-        <p>Registre sua jornada</p>
-      </div>
-
-      <div class="card" onclick="irParaRanking()">
-        <div class="icon">🏆</div>
-        <h3>Jornada</h3>
-        <p>Veja sua posição</p>
-      </div>
-
-      <div class="card" onclick="logout()">
-        <div class="icon">🚪</div>
-        <h3>Sair</h3>
-        <p>Encerrar sessão</p>
-      </div>
+      <p class="alternar">
+        Já tem conta?
+        <span onclick="alternarModo()">Entrar</span>
+      </p>
 
     </div>
-  </div>
-</section>
+  </section>
 
- <!-- ===== DESAFIO TELAS ===== -->
+  <!-- ===== HOME ===== -->
+  <section id="home" class="screen">
+    <div class="home-card">
+      <h2>Bem-vindo ao Desafio</h2>
 
-<div id="desafio" class="screen">
+      <div class="dashboard">
 
-  <div class="home-card">
+        <!-- CORRIGIDO AQUI -->
+        <div class="card" onclick="abrirDesafio()">
+          <div class="icon">🔥</div>
+          <h3>Desafio do Dia</h3>
+          <p>Veja o desafio de hoje</p>
+        </div>
 
-    <h2 id="tituloDesafio"></h2>
+        <!-- CORRIGIDO AQUI -->
+        <div class="card" onclick="abrirDiario()">
+          <div class="icon">📖</div>
+          <h3>Diário Espiritual</h3>
+          <p>Registre sua jornada</p>
+        </div>
 
-    <p id="fraseDesafio" style="margin:20px 0; font-weight:bold;"></p>
+        <div class="card" onclick="goTo('dashboard')">
+          <div class="icon">🏆</div>
+          <h3>Jornada</h3>
+          <p>Veja sua posição</p>
+        </div>
 
-    <p id="versiculoDesafio" style="font-style:italic; opacity:0.8;"></p>
+        <div class="card" onclick="logout()">
+          <div class="icon">🚪</div>
+          <h3>Sair</h3>
+          <p>Encerrar sessão</p>
+        </div>
 
-    <textarea 
-      id="textoReflexao"
-      placeholder="Escreva aqui o que você entendeu..."
-      style="width:100%; margin-top:20px; padding:15px; border-radius:15px; border:none; height:120px;">
-    </textarea>
+      </div>
+    </div>
+  </section>
 
-    <button onclick="concluirDesafio()">Concluir</button>
+  <!-- ===== DESAFIO DO DIA ===== -->
+  <section id="desafio" class="screen">
+    <div class="home-card">
 
-  </div>
+      <h2 id="tituloDesafio"></h2>
+
+      <p id="fraseDesafio" style="margin:20px 0; font-weight:bold;"></p>
+
+      <p id="versiculoDesafio" style="font-style:italic; opacity:0.8;"></p>
+
+      <textarea 
+        id="textoReflexao"
+        placeholder="Escreva aqui o que você entendeu..."
+        style="width:100%; margin-top:20px; padding:15px; border-radius:15px; border:none; height:120px;">
+      </textarea>
+
+      <button onclick="concluirDesafio()">Concluir</button>
+
+    </div>
+  </section>
+
+  <!-- ===== JORNADA ===== -->
+  <section id="dashboard" class="screen">
+    <h2 id="saudacao"></h2>
+    <p id="progressoTexto"></p>
+
+    <div id="diasContainer"></div>
+
+    <button onclick="goTo('home')">
+      Voltar
+    </button>
+  </section>
+
+  <!-- ===== DIÁRIO ===== -->
+  <section id="diario" class="screen">
+    <h2>Meu Diário 💛</h2>
+    <div id="listaDiario"></div>
+
+    <button onclick="goTo('home')">
+      Voltar
+    </button>
+  </section>
 
 </div>
 
-    <!-- ===== DASHBOARD ===== -->
-    <section id="dashboard" class="screen">
-      <h2 id="saudacao"></h2>
-      <p id="progressoTexto"></p>
-
-      <div id="diasContainer"></div>
-
-      <button type="button" onclick="goTo('home')">
-        Voltar
-      </button>
-    </section>
-
-
-    <!-- ===== DIA ESPECÍFICO ===== -->
-    <section id="dia" class="screen">
-      <h2 id="tituloDia"></h2>
-      <p id="conteudoDia"></p>
-
-      <textarea 
-        id="textoDiario" 
-        placeholder="Escreva aqui o que Deus falou com você..."
-      ></textarea>
-
-      <button type="button" onclick="concluirDia()">
-        Concluir Dia
-      </button>
-
-      <button type="button" onclick="goTo('dashboard')">
-        Voltar
-      </button>
-    </section>
-
-
-    <!-- ===== DIÁRIO GERAL ===== -->
-    <section id="diario" class="screen">
-      <h2>Meu Diário 💛</h2>
-
-      <div id="listaDiario"></div>
-
-      <button type="button" onclick="goTo('home')">
-        Voltar
-      </button>
-    </section>
-
-  </div>
-
-  <script src="app.js"></script>
+<script src="app.js" defer></script>
 
 </body>
 </html>

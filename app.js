@@ -26,7 +26,7 @@ function goTo(screenId) {
   const tela = document.getElementById(screenId);
   if (tela) {
     tela.classList.add("active");
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }
 
@@ -140,15 +140,10 @@ function abrirDesafio() {
   const desafio = desafios[progresso];
   if (!desafio) return;
 
-  const titulo = document.getElementById("tituloDesafio");
-  const frase = document.getElementById("fraseDesafio");
-  const versiculo = document.getElementById("versiculoDesafio");
-  const textarea = document.getElementById("textoReflexao");
-
-  if (titulo) titulo.innerText = `Desafio do Dia ${progresso}`;
-  if (frase) frase.innerText = desafio.frase;
-  if (versiculo) versiculo.innerText = desafio.versiculo;
-  if (textarea) textarea.value = "";
+  document.getElementById("tituloDesafio").innerText = `Desafio do Dia ${progresso}`;
+  document.getElementById("fraseDesafio").innerText = desafio.frase;
+  document.getElementById("versiculoDesafio").innerText = desafio.versiculo;
+  document.getElementById("textoReflexao").value = "";
 
   goTo("desafio");
 }
@@ -158,9 +153,8 @@ function abrirDesafio() {
 /* ========================= */
 function concluirDesafio() {
   const textarea = document.getElementById("textoReflexao");
-  if (!textarea) return;
+  const texto = textarea?.value.trim();
 
-  const texto = textarea.value.trim();
   if (!texto) {
     alert("Escreva sua reflexão 💛");
     return;
@@ -175,11 +169,12 @@ function concluirDesafio() {
   if (progresso < 7) {
     progresso++;
     localStorage.setItem("progresso", progresso);
+    alert("Jornada quase completa ✨");
   } else {
     localStorage.setItem("progresso", "8");
+    alert("Parabéns! Você concluiu os 7 dias 🎉");
   }
 
-  alert("Jornada quase completa ✨");
   goTo("home");
 }
 
@@ -189,7 +184,6 @@ function concluirDesafio() {
 function abrirDiario() {
   diarios = JSON.parse(localStorage.getItem("diarios")) || {};
   const container = document.getElementById("listaDiario");
-  if (!container) return;
 
   container.innerHTML = "";
 

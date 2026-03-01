@@ -32,19 +32,24 @@
 
       <h2 id="authTitulo">Criar Conta</h2>
 
-      <input type="text" id="nome" placeholder="Nome completo" required>
-      <input type="email" id="email" placeholder="E-mail" required>
-      <input type="password" id="senha" placeholder="Senha" required>
-      <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only" required>
+      <!-- Adicionado form apenas para estrutura sem alterar visual -->
+      <form onsubmit="event.preventDefault(); acaoAuth();">
 
-      <div class="checkbox-area">
-        <input type="checkbox" id="lembrar">
-        <label for="lembrar">Lembrar-me</label>
-      </div>
+        <input type="text" id="nome" placeholder="Nome completo" required>
+        <input type="email" id="email" placeholder="E-mail" required>
+        <input type="password" id="senha" placeholder="Senha" required>
+        <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only" required>
 
-      <button type="button" class="btn-primary" onclick="acaoAuth()" id="botaoAuth">
-        Cadastrar
-      </button>
+        <div class="checkbox-area">
+          <input type="checkbox" id="lembrar">
+          <label for="lembrar">Lembrar-me</label>
+        </div>
+
+        <button type="submit" class="btn-primary" id="botaoAuth">
+          Cadastrar
+        </button>
+
+      </form>
 
       <p class="alternar">
         Já tem conta?
@@ -104,8 +109,7 @@
       <textarea
         id="textoReflexao"
         placeholder="Escreva aqui o que você entendeu..."
-        rows="5">
-      </textarea>
+        rows="5"></textarea>
 
       <button type="button" class="btn-primary" onclick="concluirDesafio()">
         Concluir

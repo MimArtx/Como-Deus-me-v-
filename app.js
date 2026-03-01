@@ -1,7 +1,7 @@
 /* ========================= */
 /* VARIÁVEIS GLOBAIS */
 /* ========================= */
-let usuario = JSON.parse(localStorage.getItem("usuario"));
+let usuario = JSON.parse(localStorage.getItem("usuario")) || null;
 let progresso = Number(localStorage.getItem("progresso")) || 1;
 let diarios = JSON.parse(localStorage.getItem("diarios")) || {};
 
@@ -19,10 +19,15 @@ const desafios = {
 /* TROCA DE TELAS */
 /* ========================= */
 function goTo(screenId) {
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.querySelectorAll(".screen").forEach(s =>
+    s.classList.remove("active")
+  );
+
   const tela = document.getElementById(screenId);
-  if (tela) tela.classList.add("active");
-  window.scrollTo(0, 0);
+  if (tela) {
+    tela.classList.add("active");
+    window.scrollTo(0, 0);
+  }
 }
 
 /* ========================= */
@@ -38,6 +43,8 @@ function alternarModo() {
   const confirmar = document.querySelector(".cadastro-only");
   const alternarTexto = document.querySelector(".alternar span");
 
+  if (!titulo || !botao || !confirmar || !alternarTexto) return;
+
   if (modoCadastro) {
     titulo.innerText = "Criar Conta";
     botao.innerText = "Cadastrar";
@@ -52,11 +59,11 @@ function alternarModo() {
 }
 
 function acaoAuth() {
-  const nome = document.getElementById("nome").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const senha = document.getElementById("senha").value.trim();
-  const confirmarSenha = document.getElementById("confirmarSenha").value.trim();
-  const lembrar = document.getElementById("lembrar").checked;
+  const nome = document.getElementById("nome")?.value.trim();
+  const email = document.getElementById("email")?.value.trim();
+  const senha = document.getElementById("senha")?.value.trim();
+  const confirmarSenha = document.getElementById("confirmarSenha")?.value.trim();
+  const lembrar = document.getElementById("lembrar")?.checked;
 
   if (modoCadastro) {
     if (!nome || !email || !senha || !confirmarSenha) {
@@ -118,7 +125,6 @@ function desafioDisponivel() {
 /* ABRIR DESAFIO */
 /* ========================= */
 function abrirDesafio() {
-
   if (!desafioDisponivel()) {
     alert("Disponível das 06:00 às 00:00 🙏");
     return;
@@ -132,12 +138,17 @@ function abrirDesafio() {
   }
 
   const desafio = desafios[progresso];
+  if (!desafio) return;
 
-  document.getElementById("tituloDesafio").innerText = `Desafio do Dia ${progresso}`;
-  document.getElementById("fraseDesafio").innerText = desafio.frase;
-  document.getElementById("versiculoDesafio").innerText = desafio.versiculo;
+  const titulo = document.getElementById("tituloDesafio");
+  const frase = document.getElementById("fraseDesafio");
+  const versiculo = document.getElementById("versiculoDesafio");
+  const textarea = document.getElementById("textoReflexao");
 
-  document.getElementById("textoReflexao").value = "";
+  if (titulo) titulo.innerText = `Desafio do Dia ${progresso}`;
+  if (frase) frase.innerText = desafio.frase;
+  if (versiculo) versiculo.innerText = desafio.versiculo;
+  if (textarea) textarea.value = "";
 
   goTo("desafio");
 }
@@ -146,8 +157,10 @@ function abrirDesafio() {
 /* CONCLUIR DESAFIO */
 /* ========================= */
 function concluirDesafio() {
+  const textarea = document.getElementById("textoReflexao");
+  if (!textarea) return;
 
-  const texto = document.getElementById("textoReflexao").value.trim();
+  const texto = textarea.value.trim();
   if (!texto) {
     alert("Escreva sua reflexão 💛");
     return;
@@ -167,7 +180,6 @@ function concluirDesafio() {
   }
 
   alert("Jornada quase completa ✨");
-
   goTo("home");
 }
 
@@ -175,12 +187,13 @@ function concluirDesafio() {
 /* DIÁRIO */
 /* ========================= */
 function abrirDiario() {
-
   diarios = JSON.parse(localStorage.getItem("diarios")) || {};
   const container = document.getElementById("listaDiario");
+  if (!container) return;
+
   container.innerHTML = "";
 
-  for (let dia in diarios) {
+  Object.keys(diarios).forEach(dia => {
     const bloco = document.createElement("div");
     bloco.className = "card";
     bloco.innerHTML = `
@@ -188,7 +201,7 @@ function abrirDiario() {
       <p>${diarios[dia]}</p>
     `;
     container.appendChild(bloco);
-  }
+  });
 
   goTo("diario");
 }
@@ -213,7 +226,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     goTo("home");
-
   } else {
     goTo("splash");
   }

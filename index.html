@@ -19,7 +19,7 @@
       <h1>DESAFIO 7 DIAS</h1>
       <p>Como Deus Me Vê?</p>
 
-      <button class="btn-primary" onclick="goTo('auth')">
+      <button type="button" class="btn-primary" onclick="goTo('auth')">
         Começar
       </button>
     </div>
@@ -32,17 +32,17 @@
 
       <h2 id="authTitulo">Criar Conta</h2>
 
-      <input type="text" id="nome" placeholder="Nome completo">
-      <input type="email" id="email" placeholder="E-mail">
-      <input type="password" id="senha" placeholder="Senha">
-      <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only">
+      <input type="text" id="nome" placeholder="Nome completo" required>
+      <input type="email" id="email" placeholder="E-mail" required>
+      <input type="password" id="senha" placeholder="Senha" required>
+      <input type="password" id="confirmarSenha" placeholder="Confirmar senha" class="cadastro-only" required>
 
       <div class="checkbox-area">
         <input type="checkbox" id="lembrar">
         <label for="lembrar">Lembrar-me</label>
       </div>
 
-      <button class="btn-primary" onclick="acaoAuth()" id="botaoAuth">
+      <button type="button" class="btn-primary" onclick="acaoAuth()" id="botaoAuth">
         Cadastrar
       </button>
 
@@ -62,13 +62,13 @@
 
       <div class="dashboard">
 
-        <div class="card" onclick="abrirDesafio()">
+        <div class="card" onclick="goTo('desafio')">
           <div class="icon">🔥</div>
           <h3>Desafio do Dia</h3>
           <p>Veja o desafio de hoje</p>
         </div>
 
-        <div class="card" onclick="abrirDiario()">
+        <div class="card" onclick="goTo('diario')">
           <div class="icon">📖</div>
           <h3>Diário Espiritual</h3>
           <p>Registre sua jornada</p>
@@ -97,17 +97,17 @@
 
       <h2 id="tituloDesafio"></h2>
 
-      <p id="fraseDesafio" style="margin:20px 0; font-weight:bold;"></p>
+      <p id="fraseDesafio" class="frase-destaque"></p>
 
-      <p id="versiculoDesafio" style="font-style:italic; opacity:0.8;"></p>
+      <p id="versiculoDesafio" class="versiculo"></p>
 
-      <textarea 
+      <textarea
         id="textoReflexao"
         placeholder="Escreva aqui o que você entendeu..."
-        style="height:120px;">
+        rows="5">
       </textarea>
 
-      <button class="btn-primary" onclick="concluirDesafio()">
+      <button type="button" class="btn-primary" onclick="concluirDesafio()">
         Concluir
       </button>
 
@@ -120,11 +120,11 @@
     <div class="home-card">
 
       <h2 id="saudacao"></h2>
-      <p id="progressoTexto" style="margin-bottom:20px;"></p>
+      <p id="progressoTexto"></p>
 
       <div id="diasContainer"></div>
 
-      <button class="btn-primary" onclick="goTo('home')">
+      <button type="button" class="btn-primary" onclick="goTo('home')">
         Voltar
       </button>
 
@@ -138,9 +138,9 @@
 
       <h2>Meu Diário 💛</h2>
 
-      <div id="listaDiario" style="margin:20px 0;"></div>
+      <div id="listaDiario"></div>
 
-      <button class="btn-primary" onclick="goTo('home')">
+      <button type="button" class="btn-primary" onclick="goTo('home')">
         Voltar
       </button>
 
